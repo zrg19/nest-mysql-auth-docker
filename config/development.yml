@@ -1,0 +1,12 @@
+db:
+  type: 'mysql'
+  host: 'localhost'
+  port: 3306
+  username: 'root'
+  password: ''
+  database: 'nest-auth'
+  synchronize: true
+
+jwt:
+  secret: '3ABB69560A303025C678C8B96F08686D30DC5E0279E55ED74D8B04913DE111D2878BDE8C81B9AED6C38C1C27DCE1D85E3601E8850A4C880B1433008E621742A5'
+  expiresIn: 60
