@@ -7,6 +7,12 @@ import { CreateUserParams, UpdateUserParams } from 'src/utils/types';
 export class UsersService {
     constructor(private readonly userRespository: UserRepository){}
 
+    findById(id: number) {
+        return this.userRespository.findOne({
+            where: { id }
+        });
+    }
+
     findUsers() {
         return this.userRespository.find();
     }

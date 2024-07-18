@@ -11,6 +11,6 @@ const dbConfig = config.get('db');
         ...dbConfig,
         entities: [User, Task],
         synchronize: dbConfig.synchronize,
-      })]
+      }), TypeOrmModule.forFeature([User, Task])]
 })
 export class DatabaseModule {}
