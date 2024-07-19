@@ -1,0 +1,35 @@
+services:
+  nestjs_api_prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - '3001:3001'
+    environment:
+      - PORT=3001
+      - NODE_ENV=production
+      - DB_HOST=nest-mysql
+      - DB_PORT=3307
+      - DB_USER=testuser
+      - DB_PASSWORD=testuser123
+      - DB_DATABASE=nest-auth
+    depends_on:
+      - nest-mysql
+    volumes:
+      - ./src:/usr/src/app/src
+  ## MySQL Docker Compose Config
+  nest-mysql:
+    container_name: nest-mysql
+    image: mysql:8
+    environment:
+      - MYSQL_DATABASE=nest-auth
+      - MYSQL_USER=testuser
+      - MYSQL_PASSWORD=testuser123
+      - MYSQL_ROOT_PASSWORD=root123
+      - MYSQL_TCP_PORT=3307
+    ports:
+      - "3307:3307"
+    expose:
+      - "3307"
+
+  
