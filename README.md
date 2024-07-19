@@ -124,6 +124,6 @@ Feel free to fork the repository and submit pull requests. All contributions are
 
 ## License
 
-This project is licensed under the MIT License.
+[Nest](https://github.com/nestjs/nest) framework is [MIT licensed](LICENSE).
 
 ---
