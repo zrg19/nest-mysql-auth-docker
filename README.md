@@ -127,5 +127,3 @@ Feel free to fork the repository and submit pull requests. All contributions are
 This project is licensed under the MIT License.
 
 ---
-
-This should ensure the content is properly formatted in your README file.
