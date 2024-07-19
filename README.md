@@ -22,52 +22,110 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# NestJS MySQL Authentication & Authorization With Docker Containerized
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Overview
 
-## Installation
+This project is built using the NestJS framework and connects with MySQL for data persistence. It incorporates essential features like authentication and authorization using JWT and passport, CRUD operations for tasks, and Docker configuration for easy deployment.
 
-```bash
-$ npm install
-```
+## Features
 
-## Running the app
+- **Authentication & Authorization**: Secured using JWT (JSON Web Tokens) and the passport package.
+- **Tasks Module**: Implements full CRUD (Create, Read, Update, Delete) operations for task management.
+- **User & Authentication Module**: Manages user data and handles authentication processes.
+- **Docker Integration**: Provides a Docker configuration to ensure the application runs consistently across various environments.
 
-```bash
-# development
-$ npm run start
+## Getting Started
 
-# watch mode
-$ npm run start:dev
+### Prerequisites
 
-# production mode
-$ npm run start:prod
-```
+- Node.js
+- Docker
+- MySQL
 
-## Test
+### Installation
 
-```bash
-# unit tests
-$ npm run test
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/zrg19/nest-mysql-auth-docker.git
+   cd nest-mysql-auth-docker
+   ```
 
-# e2e tests
-$ npm run test:e2e
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-# test coverage
-$ npm run test:cov
-```
+3. **Configure MySQL:**
+   - Ensure MySQL is running and create a database.
+   - Update the database connection settings in `config/default.yml` or `config/development.yml` file.
 
-## Support
+4. **Run the application:**
+   ```bash
+    # development
+    $ npm run start
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+    # watch mode
+    $ npm run start:dev
 
-## Stay in touch
+    # production mode
+    $ npm run start:prod
+   ```
+5. **Test the application:**
+   ```bash
+    # unit tests
+    $ npm run test
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+    # e2e tests
+    $ npm run test:e2e
+
+    # test coverage
+    $ npm run test:cov
+   ```
+### Docker Setup with Dockerfile
+
+1. **Build Docker image:**
+   ```bash
+   docker build -t nest-mysql-auth-docker .
+   ```
+
+2. **Run Docker container:**
+   ```bash
+   docker run -p 3000:3000 nest-mysql-auth-docker
+   ```
+
+### Docker Setup with Docker Compose
+1. **Docker Compose UP:**
+   ```bash
+   docker-compose up --build
+   ```
+2. **Docker Compose Down:**
+   ```bash
+   docker-compose down
+   ```
+### API Endpoints
+
+- **User Registration:**
+  - `POST /auth/register`
+- **User Login:**
+  - `POST /auth/login`
+- **Create Task:**
+  - `POST /tasks`
+- **Get Tasks:**
+  - `GET /tasks?status=OPEN&search=Title`
+- **Update Task:**
+  - `PUT /tasks/:id`
+- **Delete Task:**
+  - `DELETE /tasks/:id`
+
+## Contributing
+
+Feel free to fork the repository and submit pull requests. All contributions are welcome!
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the MIT License.
+
+---
+
+This should ensure the content is properly formatted in your README file.
