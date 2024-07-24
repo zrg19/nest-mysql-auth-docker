@@ -6,13 +6,15 @@ import { RegisterUserDto } from './dtos/register.user.dto';
 import { LoginUserDto } from './dtos/login.user.dto';
 import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/typeorm/entities/User';
+import { LoggerService } from 'src/services/logger.service';
 
 @Injectable()
 export class AuthService {
     constructor(
         private readonly userRespository: UserRepository,
         private usersService: UsersService,
-        private jwtService: JwtService
+        private jwtService: JwtService,
+        private readonly loggerService: LoggerService
     ){}
 
     async registerUser(registerUser: RegisterUserDto) {
@@ -24,14 +26,16 @@ export class AuthService {
             email: loginUser.email
         }});
         if (user === null) {
-            throw new BadRequestException('invalid credentials');
+            this.loggerService.error('invalid credentials');
         }
 
         if (!await bcrypt.compare(loginUser.password, user.password)) {
+            this.loggerService.error('invalid credentials');
             throw new BadRequestException('invalid credentials');
         }
 
         const payload = { sub: user.id, username: user.username };
+        this.loggerService.info("Login Successfull");
         return {
             access_token: await this.jwtService.signAsync(payload)
         }

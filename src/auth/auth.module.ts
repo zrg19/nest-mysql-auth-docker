@@ -9,6 +9,7 @@ import { SECRET } from './constants';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 import * as config from 'config';
+import { LoggerService } from 'src/services/logger.service';
 
 @Module({
   imports: [
@@ -20,6 +21,6 @@ import * as config from 'config';
     })
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy]
+  providers: [AuthService, JwtStrategy, LoggerService]
 })
 export class AuthModule {}
